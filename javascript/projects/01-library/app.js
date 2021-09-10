@@ -22,6 +22,18 @@ function displayBooksOnPage() {
   myLibrary.forEach((book) => {
     let bookElement = document.createElement('div')
     bookElement.innerHTML = newBookTemplate(book)
+
+    const readButton = bookElement.querySelector('.read-button')
+    const bookId = readButton.dataset.id
+
+    readButton.addEventListener('click', () => {
+      myLibrary[bookId].read = !myLibrary[bookId].read
+      let bookRead = myLibrary[bookId].read
+
+      readButton.classList.add(bookRead ? 'read-bg' : 'not-read-bg')
+      readButton.classList.remove(bookRead ? 'not-read-bg' : 'read-bg')
+    })
+
     document.getElementById('books-wrapper').appendChild(bookElement)
   })
 }
@@ -31,18 +43,9 @@ function newBookTemplate(book) {
     <div class='book-card'>
       <h2 class='book-name'>${book.name}</h2>
       <h3 class='book-author'>${book.author}</h3>
-      <button class='read-button' data-id=${book.id} style='background-color: ${
-    book.read ? 'green' : 'red'
-  }'>Read</button>
+      <button class='read-button not-read-bg' data-id=${book.id}>Read</button>
     </div>
     `
-}
-
-let readButtons = document.getElementsByClassName('read-button')
-console.log(readButtons)
-
-for (let i = 0; i <= readButtons.length; i++) {
-  console.log(readButtons)
 }
 
 displayBooksOnPage()

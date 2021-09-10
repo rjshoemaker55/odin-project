@@ -1,3 +1,9 @@
+:root {
+  --red: rgb(80, 0, 0);
+  --green: rgb(0, 80, 40);
+  --yellow: rgb(226, 173, 0);
+}
+
 * {
   font-family: fantasy;
   margin: 0;
@@ -10,14 +16,14 @@
   top: 0;
   padding: 20px 0px;
   display: flex;
-  background: rgb(80, 0, 0);
+  background: var(--red);
   justify-content: center;
 }
 
 .nav-title {
   font-weight: bold;
   font-size: 35px;
-  color: rgb(226, 173, 0);
+  color: var(--yellow);
   margin: 0;
 }
 
@@ -48,17 +54,31 @@
 .read-button {
   font-size: 22px;
   padding: 10px 30px;
-  background-color: rgb(151, 0, 0);
   font-weight: bold;
   border: none;
   border-radius: 10px;
-  color: white;
   transition-duration: 0.3s;
+  color: white;
+}
+
+.not-read-bg {
+  background: var(--red);
+}
+
+.read-bg {
+  background: var(--green);
 }
 
 .read-button:hover {
   background-color: transparent;
-  color: rgb(151, 0, 0);
   text-decoration: underline;
   cursor: pointer;
+}
+
+.not-read-bg:hover {
+  color: var(--red);
+}
+
+.read-bg-hover {
+  color: var(--green);
 }
